@@ -1,0 +1,51 @@
+
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const categoryToggle = document.querySelector(".category-toggle");
+
+        // Open & Close Menu
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("translate-x-full");
+        });
+
+        closeBtn.addEventListener("click", () => {
+            mobileMenu.classList.add("translate-x-full");
+        });
+
+        // Dropdown Toggle for Categories
+        categoryToggle.addEventListener("click", () => {
+            categoryToggle.nextElementSibling.classList.toggle("hidden");
+            categoryToggle.querySelector("i:last-child").classList.toggle("bx-chevron-down");
+            categoryToggle.querySelector("i:last-child").classList.toggle("bx-chevron-up");
+        });
+
+
+        const gridViewBtn = document.getElementById("gridView");
+        const listViewBtn = document.getElementById("listView");
+        const articleContainer = document.getElementById("articleContainer");
+
+        gridViewBtn.addEventListener("click", function () {
+            articleContainer.classList.remove("grid-cols-1");
+            articleContainer.classList.add("grid-cols-2", "md:grid-cols-2");
+
+            document.querySelectorAll('.article-item').forEach(item => {
+                item.classList.remove("flex-row", "items-center", "space-x-3");
+                item.classList.add("flex-col");
+                item.querySelector(".article-img").classList.remove("w-32", "h-24");
+                item.querySelector(".article-img").classList.add("w-full", "h-32");
+            });
+        });
+
+        listViewBtn.addEventListener("click", function () {
+            articleContainer.classList.remove("grid-cols-2", "md:grid-cols-2");
+            articleContainer.classList.add("grid-cols-1");
+
+            document.querySelectorAll('.article-item').forEach(item => {
+                item.classList.remove("flex-col");
+                item.classList.add("flex", "flex-row", "items-center", "space-x-3");
+                item.querySelector(".article-img").classList.remove("w-full", "h-32");
+                item.querySelector(".article-img").classList.add("w-32", "h-24");
+            });
+        });
+    
